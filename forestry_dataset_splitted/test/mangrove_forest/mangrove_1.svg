@@ -1,0 +1,1 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 16"><path d="M28 16H8A8 8 0 0 1 8 0h20a8 8 0 0 1 0 16z" class="bg"></path><path d="M28 15.5H8a7.5 7.5 0 0 1 0-15h20a7.5 7.5 0 0 1 0 15z" class="bgOverlay"></path><circle cx="28" cy="8" r="5" fill="#fff" class="indicator"></circle></svg>
