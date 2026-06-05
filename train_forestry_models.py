@@ -361,7 +361,7 @@ def train_model(model, base, model_name):
       training_time    : total seconds for both phases
     """
 
-    ckpt_path  = os.path.join(SAVE_DIR, f"{model_name}_best.keras")
+    ckpt_path  = os.path.join(SAVE_DIR, f"{model_name}_best.h5")
     map_cb     = MAPCallback(val_ds, N_CLASSES, compute_every=1)
 
     # Common callbacks
@@ -369,7 +369,7 @@ def train_model(model, base, model_name):
         map_cb,
         keras.callbacks.ModelCheckpoint(
             ckpt_path, monitor='val_accuracy',
-            save_best_only=True, verbose=0),
+            save_best_only=True, save_weights_only=True, verbose=0),
         keras.callbacks.ReduceLROnPlateau(
             monitor='val_loss', factor=0.5,
             patience=5, min_lr=1e-8, verbose=1),
@@ -597,7 +597,7 @@ def evaluate_on_test(model_name, model_obj):
     Loads the best checkpoint for model_name, runs inference on
     the test set, and returns y_true, y_pred_probs, y_pred_labels.
     """
-    ckpt = os.path.join(SAVE_DIR, f"{model_name}_best.keras")
+    ckpt = os.path.join(SAVE_DIR, f"{model_name}_best.h5")
     if os.path.exists(ckpt):
         model_obj.load_weights(ckpt)
         print(f"  Loaded best weights: {ckpt}")

@@ -38,7 +38,7 @@ def build_test_dataset(split_dir):
 test_ds = build_test_dataset(TEST_DIR)
 
 def evaluate_on_test(model_name):
-    ckpt = os.path.join(SAVE_DIR, f'{model_name}_best.keras')
+    ckpt = os.path.join(SAVE_DIR, f'{model_name}_best.h5')
     print(f'Evaluating {model_name} from {ckpt}...')
     try:
         model = keras.models.load_model(ckpt, compile=False)
